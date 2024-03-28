@@ -1,11 +1,11 @@
+//https://discord.com/oauth2/authorize?client_id=1221115991895969895&permissions=8&scope=applications.commands+bot
 const fs = require('node:fs');
 const path = require('node:path');
-// Require the necessary discord.js classes
-const { Client,Collection, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const { token } = require('./config.json');
 
 // Create a new client instance
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
 client.commands = new Collection();
 client.cooldowns = new Collection();
@@ -40,5 +40,7 @@ for (const file of eventFiles) {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
 }
+
+
 // Log in to Discord with your client's token
 client.login(token);

@@ -13,7 +13,7 @@ module.exports = {
         await wait(4_000);
         await interaction.editReply('Pong!');
         const message = await interaction.fetchReply(); //fetch a response
-        console.log(message);
+        console.log('ping interaction.fetchReply() :' + message);
         await interaction.deleteReply();//delete the initial response
         await interaction.followUp({ content: 'Pong again!', ephemeral: true }); //show an additional response
     },
