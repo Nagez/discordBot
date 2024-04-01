@@ -41,7 +41,7 @@ module.exports = {
             context.font = '60px sans'//applyText(canvas,result);
             context.textAlign = "center";
             context.fillText(result, canvas.width / 2.05, canvas.height / 1.65);
-            context.strokeText(result, canvas.width / 2.05, canvas.height / 1.65);
+            //context.strokeText(result, canvas.width / 2.05, canvas.height / 1.65);
 
             const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), { name: 'profile-image.png' });
 

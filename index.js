@@ -1,4 +1,5 @@
-//https://discord.com/oauth2/authorize?client_id=1221115991895969895&permissions=8&scope=applications.commands+bot
+//invite link: https://discord.com/oauth2/authorize?client_id=1221115991895969895&permissions=8&scope=applications.commands+bot
+//discordjs api: https://discord.js.org/docs/packages/discord.js/14.14.1/ClientUser:Class#setAvatar
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
@@ -40,7 +41,6 @@ for (const file of eventFiles) {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
 }
-
 
 // Log in to Discord with your client's token
 client.login(token);
