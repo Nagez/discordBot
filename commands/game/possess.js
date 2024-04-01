@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
     category: 'game',
-    cooldown: 2,
+    cooldown: 30,
     data: new SlashCommandBuilder()
         .setName('possess')
         .setDescription('Possess somebody, changing the name and icon')

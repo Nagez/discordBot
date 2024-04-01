@@ -1,10 +1,10 @@
 const { SlashCommandBuilder } = require('discord.js');
 
-const replys = ["Wow, that was a wild one to poses!", "That one tastes purple.", "Sheesh, glad this is over.", "Did NOT like this one, woof", "Noo, I wanted more!!", "Annnd I'm out", "Unpossessed!", "I enjoyed this one.", "I quite liked this one.", "Back to being a ghost.", "Finaly! some fresh air.", "Back to normal.", "UGHH, this is the last time I'm possessing someone without streching first.", "I.. I've seen too much..", "That was kind of sick!"];
+const replys = ["Wow, that was a wild one to possess!", "That one tastes purple.", "Sheesh, glad this is over.", "Did NOT like this one, woof", "Noo, I wanted more!!", "Annnd I'm out", "Unpossessed!", "I enjoyed this one.", "I quite liked this one.", "Back to being a ghost.", "Finaly! some fresh air.", "Back to normal.", "UGHH, this is the last time I'm possessing someone without streching first.", "I.. I've seen too much..", "That was kind of sick!"];
 
 module.exports = {
     category: 'game',
-    cooldown: 5,
+    cooldown: 10,
     data: new SlashCommandBuilder()
         .setName('unpossess')
         .setDescription('Go back to being Squire! The Spooky Ghost')
