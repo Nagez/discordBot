@@ -1,8 +1,8 @@
 const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
-    category: 'game',
-    cooldown: 30,
+    category: 'ghost',
+    cooldown: 15,
     data: new SlashCommandBuilder()
         .setName('possess')
         .setDescription('Possess somebody, changing the name and icon')
@@ -12,7 +12,7 @@ module.exports = {
                 .setDescription('Possess a member of the guild')
                 .addUserOption(option =>
                     option.setName('target')
-                        .setDescription('The name of the member to poses')
+                        .setDescription('The name of the member to possess')
                         .setRequired(true))
         )
         .addSubcommand(subcommand =>
@@ -37,7 +37,7 @@ module.exports = {
                 const memberAvatar = target.user.avatarURL();
                 await interaction.guild.members.me.setNickname(target.displayName);
                 await interaction.guild.members.client.user.setAvatar(memberAvatar);
-                await interaction.reply(`Possessing ${target}`);
+                await interaction.reply(`Possessing ${target.displayName}`);
             }
             if (subcommand === 'npc') {
                 const npcName = interaction.options.getString("name")
@@ -46,11 +46,9 @@ module.exports = {
                 await interaction.guild.members.client.user.setAvatar(npcAvatar);
                 await interaction.reply(`Possessing ${npcName}`);
             }
-
         } catch (error) {
+            await interaction.reply({ content: `I need a little time to possess againm let's try in a few moments`, ephemeral: true });
             console.error(error);
-            await interaction.reply(`I could not possess because: \`${error.message}\``);
         }
-
     },
 };

@@ -1,10 +1,10 @@
 const { SlashCommandBuilder } = require('discord.js');
 
-const replys = ["Wow, that was a wild one to possess!", "That one tastes purple.", "Sheesh, glad this is over.", "Did NOT like this one, woof", "Noo, I wanted more!!", "Annnd I'm out", "Unpossessed!", "I enjoyed this one.", "I quite liked this one.", "Back to being a ghost.", "Finaly! some fresh air.", "Back to normal.", "UGHH, this is the last time I'm possessing someone without streching first.", "I.. I've seen too much..", "That was kind of sick!"];
+const replys = ["Wow, that was a wild one to possess!", "That one tastes purple.", "Sheesh, glad this is over.", "Did NOT like this one, woof", "Noo, I wanted more!!", "Annnd I'm a ghost again~", "Unpossessed!", "I enjoyed this one.", "I quite liked this one.", "Back to being a ghost.", "Finaly! some fresh air.", "Back to normal.", "UGHH, this is the last time I'm possessing someone without streching first.", "I.. I've seen too much..", "That was kind of sick!"];
 
 module.exports = {
-    category: 'game',
-    cooldown: 10,
+    category: 'ghost',
+    cooldown: 5,
     data: new SlashCommandBuilder()
         .setName('unpossess')
         .setDescription('Go back to being Squire! The Spooky Ghost')
@@ -19,6 +19,7 @@ module.exports = {
             return;
         }
         try {
+
             await interaction.guild.members.client.user.setAvatar('images/squireProfile.jpg');
 
             const inputName = interaction.options.getString("name")
@@ -30,12 +31,11 @@ module.exports = {
             }
             const randomReply = replys[Math.floor(Math.random() * replys.length)];
             await interaction.reply(randomReply);
+
         } catch (error) {
+            await interaction.reply({ content: `I need a little time to unpossess againm let's try in a few moments`, ephemeral: true });
             console.error(error);
-            await interaction.reply(`I could not unpossess because: \`${error.message}\``);
         }
-
-
     }
 
 };
