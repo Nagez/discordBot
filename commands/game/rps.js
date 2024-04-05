@@ -21,7 +21,7 @@ module.exports = {
     category: 'game',
     data: new SlashCommandBuilder()
         .setName('rock_paper_scissors')
-        .setDescription('Rock Paper Scissors game.')
+        .setDescription('Rock Paper Scissors (lizard spock) game.')
         .setDMPermission(false) //prevent being used in a direct message
         .addSubcommand(subcommand =>
             subcommand

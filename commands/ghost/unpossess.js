@@ -19,7 +19,7 @@ module.exports = {
             return;
         }
         try {
-
+            
             await interaction.guild.members.client.user.setAvatar('images/squireProfile.jpg');
 
             const inputName = interaction.options.getString("name")
