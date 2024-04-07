@@ -1,7 +1,6 @@
 const { SlashCommandBuilder, AttachmentBuilder, EmbedBuilder } = require('discord.js');
 const { randomInteger } = require('../../functions/diceFunc.js');
-const { createCanvas, Image } = require('canvas');
-const { readFile } = require('fs/promises');
+const { generateDiceCanvas } = require('../../functions/canvasUtil.js');
 
 module.exports = {
     category: 'game',
@@ -29,23 +28,10 @@ module.exports = {
         } else {
             //await interaction.followUp({ files: ['images/d20.png'] });
 
-            const canvas = createCanvas(200, 200);
-            const context = canvas.getContext('2d');
-
-            const background = await readFile('images/d20.png');
-            const backgroundImage = new Image();
-            backgroundImage.src = background;
-            context.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-
-            context.fillStyle = '#ffffff';
-            context.font = '60px sans'//applyText(canvas,result);
-            context.textAlign = "center";
-            context.fillText(result, canvas.width / 2.05, canvas.height / 1.65);
-            //context.strokeText(result, canvas.width / 2.05, canvas.height / 1.65);
-
-            const attachment = new AttachmentBuilder(canvas.toBuffer('image/png'), { name: 'profile-image.png' });
+            const {buffer} = await generateDiceCanvas(result);
+            const attachment = new AttachmentBuilder(buffer, { name: 'squire-roll.png' });
 
             await interaction.followUp({ files: [attachment] });
         }
     }
-}        
+}    
